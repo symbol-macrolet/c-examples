@@ -154,6 +154,29 @@ int list_is_empty(list const *plist) {
     return NULL == plist;
 }
 
+list* list_to_cyclic_list(list *plist) {
+    list *p = plist;
+
+    if (NULL == p) {
+        return NULL;
+    }
+
+    while(1) {
+        if (NULL == p->next) {
+            p->next = plist;
+            plist->prev = p;
+            return plist;
+        }
+        p = p->next;
+    }
+}
+
+list* cyclic_list_to_list(list *plist) {
+    plist->prev->next = NULL;
+    plist->prev = NULL;
+    return plist;
+}
+
 void list_free(list const *plist) {
     list *p = plist;
     while (p) {

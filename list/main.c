@@ -45,6 +45,35 @@ int main(void) {
     list_apply(plist, f);
     printf("\n\n\n");
 
+    printf("Remove second element:\n");
+    plist = list_remove(plist, 1);
+    list_print_int(plist);
+    printf("\n\n\n");
+
+    printf("Add element [111] in head:\n");
+    plist = list_add(plist, (void *) 111);
+    list_print_int(plist);
+    printf("\n\n\n");
+
+    printf("To cyclic list:\n");
+    plist = list_to_cyclic_list(plist);
+    {
+        int i;
+        list *p = plist;
+        if (! list_is_empty(plist)) {
+            for (i = 0; i < 20; ++i) {
+                printf("%p: %d\n", p, p->data);
+                p = p->next;
+            }
+        }
+    }
+    printf("\n\n\n");
+
+    printf("To list:\n");
+    plist = cyclic_list_to_list(plist);
+    list_print_int(plist);
+    printf("\n\n\n");
+    
     printf("Free:\n");
     list_free(plist);
 }

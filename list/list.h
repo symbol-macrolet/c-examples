@@ -62,3 +62,9 @@ list* list_remove(list* plist, int position);
   Добавляет элемент список, возвращает head модифицированного списка (head-ом становится добавляемый элемент)
 */
 list* list_add(list *plist, void *data);
+
+/*
+  list <-> cyclic list
+ */
+list* list_to_cyclic_list(list *plist);
+list* cyclic_list_to_list(list *plist);
