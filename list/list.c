@@ -94,6 +94,42 @@ list* list_insert(list const *plist, int position, void *data) {
     }
 }
 
+list* list_remove(list *plist, int position) {
+    int i;
+    list *p = plist;
+    
+    for (i = 0;; i++) {
+
+        if (p == NULL) {
+            return plist;
+        }
+
+        if (position == i) {
+            /* head node */
+            if (NULL == p->prev) {
+                list* new_head = p->next;
+                free(p);
+                return new_head;
+            }
+            else {
+                p->prev->next = p->next;
+                p->next->prev = p->prev;
+                free(p);
+                return plist;
+            }
+        }
+
+        p = p->next;
+    }
+}
+
+list* list_add(list *plist, void *data) {
+    list *node = (list *) malloc(sizeof(list));
+    node->data = data;
+    node->prev = NULL;
+    node->next = plist;
+    return node;
+}
 
 int list_join(list const *plist_a, list const *plist_b) {
     list *last;

@@ -51,3 +51,14 @@ int list_join(list const *plist_a, list const *plist_b);
   Для отладки
  */
 void list_print_int(list const *plist);
+
+/*
+  Удаляет из списка, возвращает head модифицированного списка
+ */
+list* list_remove(list* plist, int position);
+
+
+/*
+  Добавляет элемент список, возвращает head модифицированного списка (head-ом становится добавляемый элемент)
+*/
+list* list_add(list *plist, void *data);
