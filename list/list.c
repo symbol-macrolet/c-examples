@@ -31,7 +31,8 @@ list* list_append(list *plist, void *data) {
 
 list* list_find(list const *plist, int position) {
     list *p = plist;
-    for (int current_position = 0;; ++current_position) {
+    int current_position;
+    for (current_position = 0;; ++current_position) {
         if (NULL == p) {
             return NULL;
         }
@@ -65,8 +66,9 @@ void list_print_int(list const *plist) {
 
 list* list_insert(list const *plist, int position, void *data) {
     list *current = plist;
-    
-    for (int i = 0; ; ++i) {
+    int i;
+
+    for (i = 0; ; ++i) {
         if (NULL == current) {
             return 0;
         }
